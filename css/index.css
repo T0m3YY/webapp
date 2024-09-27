@@ -3,45 +3,93 @@
     padding: 0;
     box-sizing: border-box;
 }
+ 
+:root {
+    --primary-color: #1443fd;
+    --nav-icons-w-h: 26px;
+
+}
+
+
 
 body {
     font-family: 'Arial', sans-serif;
     background-color: #141414;
     color: #fff;
 }
-
+ 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #000;
-    height: 80px;
+    height: 100px;
     z-index: 11;
     position: relative;
 }
-
+ 
 .logo {
+    margin-left: 14px;
     width: 170px;
+    font-size: xxx-large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--primary-color);
+}
+ 
+
+
+
+
+.hidden {
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Donkere achtergrond */
+    backdrop-filter: blur(3px); /* Wazig effect */
+    z-index: 10;
+}
+
+.search-container {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.search-bar-info {
+    font-size: small;
+    margin-bottom: 10px;
+    color: #fff;
+    b {
+        color: #466bff;
+    }
 }
 
 .search-bar {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
     width: 300px;
+    padding: 10px;
+    font-size: 16px;
 }
 
 
 
+
+ 
+ 
 aside {
-    width: 80px;
+    width: 100px;
     background-color: #000;
     height: calc(100% + 160px);
     position: fixed;
-    top: -80px;
+    top: -60px;
     left: 0;
     display: flex;
     flex-direction: column;
@@ -49,25 +97,56 @@ aside {
     justify-content: center;
     z-index: 10;
 }
-
+ 
 aside ul {
+    margin-top: 60px;
     list-style: none;
 }
-
+ 
 aside li {
     margin: 50px 0;
 }
-
-aside li:hover {
-
+ 
+aside li::after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+ 
+    margin-top: 5px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
 }
-
-
+ 
+aside li:hover::after {
+    transform: scaleX(1);
+}
+ 
+aside li:focus::after {
+    transform: scaleX(1);
+}
+ 
+ 
 aside a {
     color: #fff;
     text-decoration: none;
     font-size: small;
 }
+
+.nav-svg {
+    height: var(--nav-icons-w-h);
+    width: var(--nav-icons-w-h);
+}
+
+#hr-aside {
+    margin-top: 60px;
+    margin-bottom: -20px;
+}
+ 
+ 
 
 
 
@@ -77,9 +156,5 @@ main {
     margin-left: 80px;
     padding: 20px;
 }
-
-
-.nav-svg {
-    height: 25px;
-    width: 25px;
-}
+ 
+ 
