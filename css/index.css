@@ -88,9 +88,9 @@ header {
 aside {
     width: 100px;
     background-color: #000;
-    height: calc(100% + 160px);
+    height: calc(100% + 170px);
     position: fixed;
-    top: -60px;
+    top: -50px;
     left: 0;
     display: flex;
     flex-direction: column;
