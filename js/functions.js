@@ -36,21 +36,61 @@ function getRandomSpotlight() {
 
 
 // Functie om de carousel te vullen met films of series
+// function populateCarousel(category, containerId) {
+//     const container = document.getElementById(containerId);
+//     const items = filmlijst[category];
+
+
+//     items.forEach((item, index) => {
+//         const carouselItem = document.createElement('div');
+//         carouselItem.classList.add('carousel-item');
+//         carouselItem.innerHTML = `
+//             <img src="${item.afbeelding}" alt="${item.titel}">
+//             <p>${item.titel}</p>`
+//             ;
+//         container.appendChild(carouselItem);
+//     });
+// }
+
+
+// Functie om het aantal "N" items te berekenen
+function assignNToItems(totalItems) {
+    const numberOfN = Math.floor(totalItems / 3); // Berekent het aantal "N" items
+    const indices = new Set();
+
+    while (indices.size < numberOfN) {
+        const randomIndex = Math.floor(Math.random() * totalItems);
+        indices.add(randomIndex);
+    }
+
+    return Array.from(indices);
+}
+
+// Functie om de carousel te vullen met films of series
 function populateCarousel(category, containerId) {
     const container = document.getElementById(containerId);
     const items = filmlijst[category];
 
+    // Genereer indices voor de "N"
+    const nIndices = assignNToItems(items.length);
 
     items.forEach((item, index) => {
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
+
+        // Voeg de "N" toe voor de geselecteerde indices
+        const nTag = nIndices.includes(index) ? '<b class="logo-N">N</b>' : '';
+
         carouselItem.innerHTML = `
+            ${nTag}
             <img src="${item.afbeelding}" alt="${item.titel}">
             <p>${item.titel}</p>`
             ;
+        
         container.appendChild(carouselItem);
     });
 }
+
 
 // Bij laden site, voer random spotlight en vul carousels
 window.onload = function() {

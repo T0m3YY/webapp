@@ -266,8 +266,14 @@ main {
 }
 
 .carousel-container::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
     background: #555; /* Darker on hover */
 }
+
+.carousel-container::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
 
 .carousel-item {
     min-width: 200px;
@@ -305,14 +311,16 @@ main {
     border-bottom-right-radius: 8px;
 }
 
-/* .logo-N {
+.logo-N {
     color: var(--primary-color);
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+
     font-size: x-large;
-    position: relative;
-    top: -250px;
-    left: -80px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
     z-index: 10;
-}  */
+} 
 /* 1 op de 9 zal een N logo links boven hebben, moet dat in js maken  */
 
 
