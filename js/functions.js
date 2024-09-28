@@ -35,24 +35,6 @@ function getRandomSpotlight() {
 
 
 
-// Functie om de carousel te vullen met films of series
-// function populateCarousel(category, containerId) {
-//     const container = document.getElementById(containerId);
-//     const items = filmlijst[category];
-
-
-//     items.forEach((item, index) => {
-//         const carouselItem = document.createElement('div');
-//         carouselItem.classList.add('carousel-item');
-//         carouselItem.innerHTML = `
-//             <img src="${item.afbeelding}" alt="${item.titel}">
-//             <p>${item.titel}</p>`
-//             ;
-//         container.appendChild(carouselItem);
-//     });
-// }
-
-
 // Functie om het aantal "N" items te berekenen
 function assignNToItems(totalItems) {
     const numberOfN = Math.floor(totalItems / 3); // Berekent het aantal "N" items
