@@ -68,35 +68,43 @@
 
     <section id="spotlight"> 
       <div id="spotlight-information">
-        <p id="spotlight-mORs"> <b>N</b> S E R I E S </p> <!--Hier komt dan afhankelijk of het een movie of serie is: N series of N movies te staan-->
-        <h1 id="spotlight-title"> Title</h1> <!--Afhankelijk voor de titel, van de json-->
-        <p id="spotlight-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod odio purus, id ornare nibh varius non. Duis auctor odio augue, in pharetra dui interdum posuere. Proin ut mattis nunc, fermentum blandit dolor.</p> <!--Hier komt de description van de serie of film-->
+        <p id="spotlight-mORs"> <b> N </b> <span id="category">S E R I E S</span> </p> <!-- De categorie wordt afhankelijk van de keuze aangepast naar "Movie" of "Series"-->
+        <h1 id="spotlight-title"> Title</h1> <!-- Dynamisch ingevoegde titel -->
+        <p id="spotlight-description"> Description</p> <!-- Dynamisch ingevoegde beschrijving -->
         
         <div class="buttons-play-info">
-          <button> 
+          <button>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+              <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
             </svg> 
-            <span>Play</span> 
+            <span>Play</span>
           </button> 
-          <button> More Info </button>
+          <button> More info </button>
         </div>
-        
       </div>
     </section>
+    
 
-
-    <section id="trending" class="carousel"> 
-
-      <h2>Tekst</h2>
+    <section class="carousel">
+      <h2>Movies</h2>
+      <div id="movie-carousel" class="carousel-container"></div>
     </section>
 
+    <section class="carousel">
+      <h2>Series</h2>
+      <div id="series-carousel" class="carousel-container"></div>
+    </section>
+
+    <section id="fill-in"></section>
   </main>
+
 
 
 </body>
 
 <script src="js/searchbar.js"></script>
+<script src="js/films.js"></script>
+<script src="js/functions.js"></script>
 
 </html>
 
