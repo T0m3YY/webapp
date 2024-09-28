@@ -176,7 +176,7 @@ main {
 }
 
 #spotlight-information {
-    transform: translateY(100px);
+    transform: translateY(80px);
     color: white;
 
     #spotlight-mORs {
