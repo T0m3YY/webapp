@@ -57,45 +57,106 @@
       </nav>
   </aside>
 
-  <div class="overlay hidden"></div>
+
+
+
+  <div class="overlay-searchbar hidden"></div>
+
   <div class="search-container hidden">
     <p class="search-bar-info">Use: <b>Ctrl + S</b>, for quick access</p>
     <input type="text" placeholder="Zoeken naar films of series" class="search-bar">
   </div>
   
 
+
+
+
+
+
+  <div class="overlay-info hidden"></div>
+
+  <div id="info-popup" class="hidden">
+    <div class="info-content">
+        <div id="info-image-container">
+            <div class="info-title">
+                <h2 id="info-title"></h2>
+            </div>
+        </div>
+
+        <div class="info-details">
+            <div class="buttons">
+                <button id="play-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+                  </svg>
+                  Play
+                </button>
+                <button id="download-btn">Download</button>
+            </div>
+            <section>
+              <p id="info-description"></p>
+              <p><strong>Cast:</strong> <span id="info-cast"></span></p>
+              <p><strong>Maker:</strong> <span id="info-maker"></span></p>
+              <p><strong>Genre:</strong> <span id="info-genre"></span></p>
+            </section>
+
+            <section class="fill-in"></section>
+            
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
   <main>
+
+
+
+
 
     <section id="spotlight"> 
       <div id="spotlight-information">
-        <p id="spotlight-mORs"> <b> N </b> <span id="category">S E R I E S</span> </p> <!-- De categorie wordt afhankelijk van de keuze aangepast naar "Movie" of "Series"-->
-        <h1 id="spotlight-title"> Title</h1> <!-- Dynamisch ingevoegde titel -->
-        <p id="spotlight-description"> Description</p> <!-- Dynamisch ingevoegde beschrijving -->
+        <p id="spotlight-mORs"> <b> N </b> <span id="category">S E R I E S</span> </p>
+        <h1 id="spotlight-title"> Title</h1> 
+        <p id="spotlight-description"> Description</p>
         
-        <div class="buttons-play-info">
+        <div class="buttons">
           <button>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
               <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
             </svg> 
             <span>Play</span>
           </button> 
-          <button> More info </button>
+          <button id="btn-more-info"> More info </button>
         </div>
       </div>
     </section>
     
+
 
     <section class="carousel">
       <h2>Movies</h2>
       <div id="movie-carousel" class="carousel-container"></div>
     </section>
 
+
+
     <section class="carousel">
       <h2>Series</h2>
       <div id="series-carousel" class="carousel-container"></div>
     </section>
 
-    <section id="fill-in"></section>
+
+
+    <section class="fill-in"></section>
+
+
+
   </main>
 
 
