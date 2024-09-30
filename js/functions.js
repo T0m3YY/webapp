@@ -28,11 +28,6 @@ function getRandomSpotlight() {
     updateSpotlight(randomCategory, randomIndex);
 }
 
-
-
-
-
-
 // Event listener voor het openen van de info-popup
 function showInfoPopup(item) {
     const popup = document.getElementById('info-popup');
@@ -67,50 +62,25 @@ document.querySelector('.overlay-info').onclick = () => {
     overlay.classList.add('hidden');
 };
 
-
-
-
-
-
-
-// Functie om het aantal "N" items te berekenen
-function assignNToItems(totalItems) {
-    const numberOfN = Math.floor(totalItems / 3);
-    const indices = new Set();
-    while (indices.size < numberOfN) {
-        const randomIndex = Math.floor(Math.random() * totalItems);
-        indices.add(randomIndex);
-    }
-    return Array.from(indices);
-}
-
 // Functie om de carousel te vullen met films of series
 function populateCarousel(category, containerId) {
     const container = document.getElementById(containerId);
     const items = filmlijst[category];
 
-    const nIndices = assignNToItems(items.length);
-
     items.forEach((item, index) => {
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
 
-        const nTag = nIndices.includes(index) ? '<b class="logo-N">N</b>' : '';
-
         carouselItem.innerHTML = `
-            ${nTag}
             <img src="${item.afbeelding}" alt="${item.titel}">
             <p>${item.titel}</p>
         `;
 
         // Voeg een click event toe om de info popup te tonen
         carouselItem.onclick = () => showInfoPopup(item);
-        
         container.appendChild(carouselItem);
     });
 }
-
-
 
 // Bij laden site, voer random spotlight en vul carousels
 window.onload = function() {
@@ -118,4 +88,3 @@ window.onload = function() {
     populateCarousel('films', 'movie-carousel');
     populateCarousel('series', 'series-carousel');
 };
-

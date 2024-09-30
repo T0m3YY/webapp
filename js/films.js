@@ -87,7 +87,7 @@ var filmlijst = {
             titel: "Series van één",
             description: "This is the description for Series 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet consequat urna. Morbi et erat purus. Sed quis massa aliquam, tempor tortor nec, eleifend arcu.",
             afbeelding: "https://e0.pxfuel.com/wallpapers/406/349/desktop-wallpaper-abstract-nature-mountain-abstract-thumbnail.jpg",
-            cast: "john, doe, ava, jaap",
+            cast: "john, doe, noa, jaap",
             maker: "maker",
             Genre: ["Thriller", "Drama", "Adventure"]
         },

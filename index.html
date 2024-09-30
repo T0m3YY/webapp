@@ -59,14 +59,28 @@
 
 
 
+  <section id="#search">
 
-  <div class="overlay-searchbar hidden"></div>
+    <div class="overlay-searchbar hidden"></div>
 
-  <div class="search-container hidden">
-    <p class="search-bar-info">Use: <b>Ctrl + S</b>, for quick access</p>
-    <input type="text" placeholder="Zoeken naar films of series" class="search-bar">
-  </div>
+    <div class="search-container hidden">
+      <p class="search-bar-info">Use: <b>Ctrl + S</b>, for quick access</p>
+      <input id="search-bar" type="text" placeholder="Zoeken naar films of series" class="search-bar">
+    </div>
   
+    <section id="search-results-container" class="hidden">
+      <div id="search-filters" class="buttons">
+          <button id="filter-movies" class="filter-btn">Movies</button>
+          <button id="filter-series" class="filter-btn">Series</button>
+      </div>
+      <div id="search-results" class="search-results-grid">
+          <!-- Hier komen de zoekresultaten -->
+      </div>
+    </section>
+
+  </section>
+  
+
 
 
 
@@ -113,9 +127,7 @@
 
 
 
-  <main>
-
-
+  <main id="#home">
 
 
 
@@ -150,6 +162,8 @@
       <h2>Series</h2>
       <div id="series-carousel" class="carousel-container"></div>
     </section>
+
+
 
 
 

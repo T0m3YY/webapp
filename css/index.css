@@ -227,13 +227,29 @@ button:hover {
 
 
 
-
 .search-container {
     position: fixed;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 50;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.search-bar {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #222;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.search-bar::placeholder {
+    color: #888;
 }
 
 .search-bar-info {
@@ -245,11 +261,9 @@ button:hover {
     }
 }
 
-.search-bar {
-    width: 300px;
-    padding: 10px;
-    font-size: 16px;
-}
+
+
+
 
 
 
@@ -458,6 +472,56 @@ main {
     z-index: 10;
 } 
 /* 1 op de 9 zal een N logo links boven hebben, moet dat in js maken  */
+
+
+
+
+
+
+
+
+
+
+
+
+#search-results-container {
+    margin-left: 120px;
+    margin-right: 20px;
+}
+
+
+.filter-btn {
+}
+
+.filter-btn:hover {
+    background-color: #0f3bd2;
+}
+
+/* Grid-styling voor zoekresultaten */
+.search-results-grid {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Voor 4 kaartjes per rij */
+    gap: 16px;
+}
+
+.search-results-grid .carousel-item {
+    width: 100%;
+    height: auto;
+    max-width: none; 
+}
+
+.search-results-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.search-results-grid img:hover {
+    transform: scale(1.05);
+}
 
 
 
