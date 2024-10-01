@@ -90,9 +90,6 @@ button:hover {
 
 
 
-
-
-
 #info-popup {
     position: fixed;
     bottom: -100%; /* Begin onder het scherm */
@@ -471,7 +468,6 @@ main {
     left: 10px;
     z-index: 10;
 } 
-/* 1 op de 9 zal een N logo links boven hebben, moet dat in js maken  */
 
 
 
@@ -483,19 +479,15 @@ main {
 
 
 
+#filter-clear {
+    margin-left: 40px;
+}
 
 #search-results-container {
     margin-left: 120px;
     margin-right: 20px;
 }
 
-
-.filter-btn {
-}
-
-.filter-btn:hover {
-    background-color: #0f3bd2;
-}
 
 /* Grid-styling voor zoekresultaten */
 .search-results-grid {

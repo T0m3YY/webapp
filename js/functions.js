@@ -20,6 +20,14 @@ function updateSpotlight(category, index) {
     moreInfoButton.onclick = () => showInfoPopup(item);
 }
 
+
+
+
+
+
+
+
+
 // Functie om willekeurig een film of serie te selecteren
 function getRandomSpotlight() {
     const categories = ['films', 'series'];
@@ -27,6 +35,18 @@ function getRandomSpotlight() {
     const randomIndex = Math.floor(Math.random() * filmlijst[randomCategory].length);
     updateSpotlight(randomCategory, randomIndex);
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Event listener voor het openen van de info-popup
 function showInfoPopup(item) {
@@ -52,6 +72,12 @@ function showInfoPopup(item) {
     popup.classList.add('show');
 }
 
+
+
+
+
+
+
 // Event listener om de popup te sluiten bij klik buiten de content
 document.querySelector('.overlay-info').onclick = () => {
     const popup = document.getElementById('info-popup');
@@ -62,25 +88,65 @@ document.querySelector('.overlay-info').onclick = () => {
     overlay.classList.add('hidden');
 };
 
+
+
+
+
+
+
+// Functie om het aantal "N" items te berekenen
+function assignNToItems(totalItems) {
+    const numberOfN = Math.floor(totalItems / 3);
+    const indices = new Set();
+    while (indices.size < numberOfN) {
+        const randomIndex = Math.floor(Math.random() * totalItems);
+        indices.add(randomIndex);
+    }
+    return Array.from(indices);
+}
+
+
+
+
+
+
+
+
+
+
 // Functie om de carousel te vullen met films of series
 function populateCarousel(category, containerId) {
     const container = document.getElementById(containerId);
     const items = filmlijst[category];
 
+    const nIndices = assignNToItems(items.length); // Bepaal de items met een "N" logo
+
     items.forEach((item, index) => {
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
 
+        // Voeg het "N" logo toe als dit item een "N" logo moet hebben
+        const nTag = nIndices.includes(index) ? '<b class="logo-N">N</b>' : '';
+
         carouselItem.innerHTML = `
+            ${nTag} <!-- Voeg het "N" logo toe hier -->
             <img src="${item.afbeelding}" alt="${item.titel}">
             <p>${item.titel}</p>
         `;
 
         // Voeg een click event toe om de info popup te tonen
         carouselItem.onclick = () => showInfoPopup(item);
+        
         container.appendChild(carouselItem);
     });
 }
+
+
+
+
+
+
+
 
 // Bij laden site, voer random spotlight en vul carousels
 window.onload = function() {

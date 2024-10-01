@@ -16,6 +16,9 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// Variabele om de huidige zoekresultaten op te slaan
+let currentResults = {}; // We maken deze variabele aan om later te gebruiken voor filtering
+
 // Event listener voor de zoekbalk, voert de zoekopdracht uit wanneer 'Enter' wordt ingedrukt
 document.querySelector('.search-bar').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -26,8 +29,6 @@ document.querySelector('.search-bar').addEventListener('keydown', function(event
         document.querySelectorAll('.overlay-searchbar, .search-container').forEach(el => el.classList.add('hidden'));
     }
 });
-
-
 
 // Functie om films/series te filteren op basis van de zoekterm
 function filterResults(searchTerm) {
@@ -50,8 +51,11 @@ function filterResults(searchTerm) {
         }
     });
 
-    // Toon de gefilterde resultaten
-    displayFilteredResults(results);
+    // Sla de huidige zoekresultaten op in de variabele 'currentResults'
+    currentResults = results; // Hiermee kunnen we later filteren tussen films en series
+
+    // Toon alle resultaten (films en series)
+    displayAllResults(results);
 }
 
 // Functie om te controleren of een film/serie overeenkomt met de zoekterm
@@ -65,8 +69,8 @@ function matchesSearchTerm(item, searchTerm) {
     );
 }
 
-// Functie om de gefilterde resultaten te tonen
-function displayFilteredResults(results) {
+// Functie om alle zoekresultaten te tonen
+function displayAllResults(results) {
     const main = document.querySelector('main');
     const searchResultsContainer = document.getElementById('search-results-container');
     const searchResultsGrid = document.getElementById('search-results');
@@ -77,33 +81,28 @@ function displayFilteredResults(results) {
     // Leeg de huidige zoekresultaten container
     searchResultsGrid.innerHTML = '';
 
-    // Toon zoekresultaten voor films
-    if (results.films.length > 0) {
-        results.films.forEach(film => {
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('carousel-item');
-            resultItem.innerHTML = `
-                <img src="${film.afbeelding}" alt="${film.titel}">
-                <p>${film.titel}</p>
-            `;
-            resultItem.onclick = () => showInfoPopup(film);
-            searchResultsGrid.appendChild(resultItem);
-        });
-    }
+    // Toon zoekresultaten voor films en series
+    results.films.forEach(film => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('carousel-item');
+        resultItem.innerHTML = `
+            <img src="${film.afbeelding}" alt="${film.titel}">
+            <p>${film.titel}</p>
+        `;
+        resultItem.onclick = () => showInfoPopup(film);
+        searchResultsGrid.appendChild(resultItem);
+    });
 
-    // Toon zoekresultaten voor series
-    if (results.series.length > 0) {
-        results.series.forEach(serie => {
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('carousel-item');
-            resultItem.innerHTML = `
-                <img src="${serie.afbeelding}" alt="${serie.titel}">
-                <p>${serie.titel}</p>
-            `;
-            resultItem.onclick = () => showInfoPopup(serie);
-            searchResultsGrid.appendChild(resultItem);
-        });
-    }
+    results.series.forEach(serie => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('carousel-item');
+        resultItem.innerHTML = `
+            <img src="${serie.afbeelding}" alt="${serie.titel}">
+            <p>${serie.titel}</p>
+        `;
+        resultItem.onclick = () => showInfoPopup(serie);
+        searchResultsGrid.appendChild(resultItem);
+    });
 
     // Als er geen resultaten zijn, toon een bericht
     if (results.films.length === 0 && results.series.length === 0) {
@@ -114,6 +113,69 @@ function displayFilteredResults(results) {
     searchResultsContainer.classList.remove('hidden');
 }
 
+// Functie om gefilterde films te tonen
+function displayFilteredMovies() {
+    const searchResultsGrid = document.getElementById('search-results');
+    searchResultsGrid.innerHTML = ''; // Maak de container leeg
+
+    // Voeg alleen films toe aan de zoekresultaten
+    currentResults.films.forEach(film => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('carousel-item');
+        resultItem.innerHTML = `
+            <img src="${film.afbeelding}" alt="${film.titel}">
+            <p>${film.titel}</p>
+        `;
+        resultItem.onclick = () => showInfoPopup(film);
+        searchResultsGrid.appendChild(resultItem);
+    });
+
+    if (currentResults.films.length === 0) {
+        searchResultsGrid.innerHTML = '<p>Geen films gevonden.</p>';
+    }
+}
+
+// Functie om gefilterde series te tonen
+function displayFilteredSeries() {
+    const searchResultsGrid = document.getElementById('search-results');
+    searchResultsGrid.innerHTML = ''; // Maak de container leeg
+
+    // Voeg alleen series toe aan de zoekresultaten
+    currentResults.series.forEach(serie => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('carousel-item');
+        resultItem.innerHTML = `
+            <img src="${serie.afbeelding}" alt="${serie.titel}">
+            <p>${serie.titel}</p>
+        `;
+        resultItem.onclick = () => showInfoPopup(serie);
+        searchResultsGrid.appendChild(resultItem);
+    });
+
+    if (currentResults.series.length === 0) {
+        searchResultsGrid.innerHTML = '<p>Geen series gevonden.</p>';
+    }
+}
+
+// Functie om alles te resetten naar de volledige resultaten
+function clearFilters() {
+    displayAllResults(currentResults); // Toon opnieuw alle resultaten
+}
+
+// Event listener voor de Movies-filterknop
+document.getElementById('filter-movies').addEventListener('click', function() {
+    displayFilteredMovies();
+});
+
+// Event listener voor de Series-filterknop
+document.getElementById('filter-series').addEventListener('click', function() {
+    displayFilteredSeries();
+});
+
+// Event listener voor de Clear-filterknop
+document.getElementById('filter-clear').addEventListener('click', function() {
+    clearFilters(); // Reset de filters en toon alle resultaten
+});
 
 // Event listener voor de home link
 document.querySelector('a[href="#home"]').onclick = () => {
@@ -126,4 +188,3 @@ document.querySelector('a[href="#home"]').onclick = () => {
     // Toon de hoofdinformatie weer
     main.classList.remove('hidden');
 };
-
