@@ -173,6 +173,11 @@ button:hover {
     color: #b4b4b4;
 }
 
+#info-date-made {
+    margin-top: -20px;
+    margin-bottom: 15px;
+}
+
 #info-description {
     margin-bottom: 25px;
     color: #fff;
@@ -342,13 +347,17 @@ main {
  
  
 
+
+
+
 #spotlight { 
     background-color: #000000;
     margin: -20px -20px;
-    height: 550px;
+    min-height: 530px;
+    max-height: fit-content;
     padding: 20px;
     
-    box-shadow: inset 380px 1px 1000px 70px rgb(0, 0, 0);
+    box-shadow: inset 380px 1px 1000px 70px rgba(0, 0, 0, 1);
     
     background-repeat: no-repeat;
     background-size: cover;
@@ -372,7 +381,7 @@ main {
     #spotlight-title {
         font-size: 4.5rem;
         margin-bottom: 10px;
-        max-width: 42%;
+        max-width: 45%;
     };
 
     #spotlight-description {
@@ -386,6 +395,7 @@ main {
 /* Carousel styling */
 .carousel {
     margin-top: 30px;
+    margin-bottom: 80px;
     padding-left: 40px;
 }
 
@@ -414,7 +424,7 @@ main {
 
 .carousel-container::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
-    background: #555; /* Darker on hover */
+    background: #555; 
 }
 
 .carousel-container::-webkit-scrollbar-thumb:active {

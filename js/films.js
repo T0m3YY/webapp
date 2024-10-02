@@ -7,14 +7,16 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Comedy", "Drama"],
+            date: "2008-01-01"
         },
         {
-            titel: "andere Titel film",
+            titel: "Andere Titel film",
             description: "This is the description for Movie 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet consequat urna. Morbi et erat purus. Sed quis massa aliquam, tempor tortor nec, eleifend arcu.",
             afbeelding: "https://wallpapercrafter.com/sizes/1366x768/108198-purple-nature-colorful-trees-forest-smoke-mist-artwork.jpg",
             cast: "noa, max, aquaman, jaap",
             maker: "maker",
-            Genre: ["Fantasy", "Action"]
+            Genre: ["Fantasy", "Action"],
+            date: "2007-11-04"
         },
         {
             titel: "Film één 2",
@@ -23,6 +25,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Comedy", "Action"],
+            date: "2012-01-01"
         },
         {
             titel: "Film één 3",
@@ -31,6 +34,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Fantasy", "Drama"],
+            date: "2014-01-01"
         },
         {
             titel: "Buurman & Buurman",
@@ -39,6 +43,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Comedy", "Fantasy"],
+            date: "2017-05-16"
         },
         {
             titel: "Buurman & Buurman 2",
@@ -47,6 +52,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Comedy", "Action"],
+            date: "2021-10-06"
         },
         {
             titel: "Nature",
@@ -55,6 +61,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Fantasy", "Thriller"],
+            date: "2023-03-02"
         },
         {
             titel: "Space",
@@ -63,6 +70,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Action", "Drama"],
+            date: "1986-12-17"
         },
         {
             titel: "Ran out of Ideas",
@@ -71,6 +79,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Comedy", "Thriller"],
+            date: "2024-10-02"
         },
         {
             titel: "My dog got... again",
@@ -78,7 +87,8 @@ var filmlijst = {
             afbeelding: "https://wallpapers.com/images/featured/action-movie-pb93e7r343erqgtt.jpg",
             cast: "a, b, c, jaap",
             maker: "maker",
-            Genre: ["Adventure", "Drama"]
+            Genre: ["Adventure", "Drama"],
+            date: "2017-06-03"
         },
     ],
 
@@ -89,7 +99,8 @@ var filmlijst = {
             afbeelding: "https://e0.pxfuel.com/wallpapers/406/349/desktop-wallpaper-abstract-nature-mountain-abstract-thumbnail.jpg",
             cast: "john, doe, noa, jaap",
             maker: "maker",
-            Genre: ["Thriller", "Drama", "Adventure"]
+            Genre: ["Thriller", "Drama", "Adventure"],
+            date: "2015-10-10"
         },
         {
             titel: "Andere serie",
@@ -97,7 +108,8 @@ var filmlijst = {
             afbeelding: "https://wallpapers.com/images/hd/google-background-35kqx1ap7jv2cmdt.jpg",
             cast: "a, b, c, jaap",
             maker: "maker",
-            Genre: ["Comedy", "Drama"]
+            Genre: ["Comedy", "Drama"],
+            date: "2009-09-10"
         },
         {
             titel: "Why u need dr...",
@@ -105,7 +117,8 @@ var filmlijst = {
             afbeelding: "https://wallpapers.com/images/hd/question-mark-neon-light-digital-art-y25vq7u0j6qvau1f.jpg",
             cast: "a, b, c, jaap",
             maker: "maker",
-            Genre: ["Comedy", "Drama"]
+            Genre: ["Comedy", "Drama"],
+            date: "2024-10-02"
         },
         {
             titel: "How to train Pokemon",
@@ -113,7 +126,8 @@ var filmlijst = {
             afbeelding: "https://images7.alphacoders.com/133/1339105.png",
             cast: "a, b, c, jaap",
             maker: "maker",
-            Genre: ["Thriller", "Adventure"]
+            Genre: ["Thriller", "Adventure"],
+            date: "2024-10-01"
         },
         {
             titel: "What to do when...",
@@ -121,7 +135,8 @@ var filmlijst = {
             afbeelding: "https://t3.ftcdn.net/jpg/05/84/65/40/360_F_584654097_iC7ONoJ9Z4V7DCO23Y3dy3aq1Idofegu.jpg",
             cast: "a, b, c, jaap",
             maker: "maker",
-            Genre: ["Comedy", "Thriller"]
+            Genre: ["Comedy", "Thriller"],
+            date: "2022-01-01"
         },
         {
             titel: "The Kartel",
@@ -130,6 +145,7 @@ var filmlijst = {
             cast: "henk, noa, adam, jaap",
             maker: "maker",
             Genre: ["Comedy", "Drama"],
+            date: "2025-10-01"
         },
     ]
 };

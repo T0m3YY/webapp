@@ -54,6 +54,7 @@ function showInfoPopup(item) {
     const overlay = document.querySelector('.overlay-info');
     const infoImageContainer = document.getElementById('info-image-container');
     const infoTitle = document.getElementById('info-title');
+    const infoDateMade = document.getElementById('info-date-made');
     const infoDescription = document.getElementById('info-description');
     const infoCast = document.getElementById('info-cast');
     const infoMaker = document.getElementById('info-maker');
@@ -62,6 +63,7 @@ function showInfoPopup(item) {
     // Vul de popup met de item data
     infoImageContainer.style.backgroundImage = `url(${item.afbeelding})`;
     infoTitle.textContent = item.titel;
+    infoDateMade.textContent = item.date;
     infoDescription.textContent = item.description;
     infoCast.textContent = item.cast;
     infoMaker.textContent = item.maker;
@@ -142,6 +144,31 @@ function populateCarousel(category, containerId) {
 }
 
 
+function populateNewOnNetflux() {
+    const container = document.getElementById('new-carousel');
+    const items = [...filmlijst.films, ...filmlijst.series]; // Combineer films en series (spread array)
+    
+    // Sorteer de items op tijd van nieuw naar oud
+    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Beperk het aantal te tonen items (bijv de 10 nieuwste)
+    const latestItems = items.slice(0, 10);
+
+    latestItems.forEach(item => {
+        const carouselItem = document.createElement('div');
+        carouselItem.classList.add('carousel-item');
+        
+        carouselItem.innerHTML = `
+            <img src="${item.afbeelding}" alt="${item.titel}">
+            <p>${item.titel}</p>
+        `;
+
+        carouselItem.onclick = () => showInfoPopup(item);
+        
+        container.appendChild(carouselItem);
+    });
+}
+
 
 
 
@@ -153,4 +180,5 @@ window.onload = function() {
     getRandomSpotlight();
     populateCarousel('films', 'movie-carousel');
     populateCarousel('series', 'series-carousel');
+    populateNewOnNetflux(); 
 };
