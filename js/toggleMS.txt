@@ -1,0 +1,63 @@
+let currentCategory = ""; // Default to movies when page loads
+
+
+// Function to switch between movies and series based on the clicked page
+function displayContent(category) {
+  currentCategory = category; // Update the current category to either movies or series
+  const genreContainers = document.querySelectorAll('.genre-container');
+  
+  // Loop over each genre container to populate them with the right content
+  genreContainers.forEach(container => {
+    const genreTitle = container.querySelector('h2').textContent.toLowerCase();
+    const carouselContainer = container.querySelector('.carousel-container');
+    populateGenreCarousel(category, genreTitle, carouselContainer);
+  });
+  
+  updateSpotlight(); // Update the spotlight based on the selected category
+}
+
+// Function to populate the carousel with the respective content
+function populateGenreCarousel(category, genreTitle, carouselContainer) {
+  carouselContainer.innerHTML = ''; // Clear the carousel content
+
+  const items = filmlijst[category].filter(item => item.Genre.includes(genreTitle)); // Filter items by genre
+  if (items.length > 0) {
+    items.forEach(item => {
+      const carouselItem = document.createElement('div');
+      carouselItem.classList.add('carousel-item');
+      carouselItem.innerHTML = `
+        <img src="${item.afbeelding}" alt="${item.titel}">
+        <p>${item.titel}</p>
+      `;
+      carouselItem.onclick = () => showInfoPopup(item);
+      carouselContainer.appendChild(carouselItem);
+    });
+  } else {
+    carouselContainer.innerHTML = `<p>No ${category} available in this genre.</p>`;
+  }
+}
+
+// Function to update the spotlight (based on the current category: movies or series)
+function updateSpotlight() {
+  const randomIndex = Math.floor(Math.random() * filmlijst[currentCategory].length);
+  const item = filmlijst[currentCategory][randomIndex];
+  const spotlightTitle = document.getElementById('spotlight-title');
+  const spotlightDescription = document.getElementById('spotlight-description');
+
+  spotlightTitle.textContent = item.titel;
+  spotlightDescription.textContent = item.description;
+  document.getElementById('spotlight').style.backgroundImage = `url(${item.afbeelding})`;
+
+  const moreInfoButton = document.getElementById('btn-more-info');
+  moreInfoButton.onclick = () => showInfoPopup(item);
+}
+
+
+// Event listeners for Movies and Series buttons
+document.querySelector('a[href="#movies"]').onclick = () => displayContent("films");
+document.querySelector('a[href="#series"]').onclick = () => displayContent("series");
+
+// Initialize the page with movies as default
+window.onload = function() {
+  displayContent("films");
+};

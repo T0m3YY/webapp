@@ -113,6 +113,33 @@ function assignNToItems(totalItems) {
 
 
 
+function populateNewOnNetflux() {
+    const container = document.getElementById('new-carousel');
+    const items = [...filmlijst.films, ...filmlijst.series]; // Combineer films en series (spread array)
+    
+    // Sorteer de items op tijd van nieuw naar oud
+    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Beperk het aantal te tonen items (bijv de 10 nieuwste)
+    const latestItems = items.slice(0, 10);
+
+    latestItems.forEach(item => {
+        const carouselItem = document.createElement('div');
+        carouselItem.classList.add('carousel-item');
+        
+        carouselItem.innerHTML = `
+            <img src="${item.afbeelding}" alt="${item.titel}">
+            <p>${item.titel}</p>
+        `;
+
+        carouselItem.onclick = () => showInfoPopup(item);
+        
+        container.appendChild(carouselItem);
+    });
+}
+
+
+
 
 
 
@@ -144,30 +171,7 @@ function populateCarousel(category, containerId) {
 }
 
 
-function populateNewOnNetflux() {
-    const container = document.getElementById('new-carousel');
-    const items = [...filmlijst.films, ...filmlijst.series]; // Combineer films en series (spread array)
-    
-    // Sorteer de items op tijd van nieuw naar oud
-    items.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Beperk het aantal te tonen items (bijv de 10 nieuwste)
-    const latestItems = items.slice(0, 10);
-
-    latestItems.forEach(item => {
-        const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item');
-        
-        carouselItem.innerHTML = `
-            <img src="${item.afbeelding}" alt="${item.titel}">
-            <p>${item.titel}</p>
-        `;
-
-        carouselItem.onclick = () => showInfoPopup(item);
-        
-        container.appendChild(carouselItem);
-    });
-}
 
 
 
@@ -178,7 +182,8 @@ function populateNewOnNetflux() {
 // Bij laden site, voer random spotlight en vul carousels
 window.onload = function() {
     getRandomSpotlight();
+    populateNewOnNetflux(); 
+
     populateCarousel('films', 'movie-carousel');
     populateCarousel('series', 'series-carousel');
-    populateNewOnNetflux(); 
 };
