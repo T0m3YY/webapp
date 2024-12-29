@@ -21,16 +21,10 @@
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg> </a></li>
 
-          <li><a href="#home">
+          <li class="active"><a href="#home">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="nav-svg" viewBox="0 0 16 16">
               <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
-            </svg></a></li>
-
-          <li><a href="#trending">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="nav-svg" viewBox="0 0 16 16">
-              <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"/>
             </svg></a></li>
 
           <li><a href="#series"> 
@@ -44,6 +38,14 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="nav-svg" viewBox="0 0 16 16">
               <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z"/>
             </svg></a></li>
+
+
+          <li><a href="#mijn-lijst">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="nav-svg" viewBox="0 0 16 16">
+            <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+          </svg></a></li>
+
 
           <hr id="hr-aside">
           <li><a href="#settings">
@@ -101,13 +103,18 @@
         <div class="info-details">
           <p id="info-date-made"></p>
             <div class="buttons">
-                <button id="play-btn">
+                <button class="play-btn">
                   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
                     <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
                   </svg>
                   Play
                 </button>
                 <button id="download-btn">Download</button>
+                <button class="addToMyList">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="-1.5 0 16 16">
+                    <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                  </svg> 
+                </button>
             </div>
             <section>
               <p id="info-description"></p>
@@ -123,19 +130,13 @@
   </div>
 
 
-
-
-
-
-
-
   <main id="#home">
 
 
 
     <section id="spotlight"> 
       <div id="spotlight-information">
-        <p id="spotlight-mORs"> <b> N </b> <span id="category">S E R I E S</span> </p>
+        <p id="spotlight-mORs"> <b> N </b> <span id="category"></span> </p>
         <h1 id="spotlight-title"> Title</h1> 
         <p id="spotlight-description"> Description</p>
         
@@ -147,54 +148,133 @@
             <span>Play</span>
           </button> 
           <button id="btn-more-info"> More info </button>
+          <button class="addToMyList">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="-1.5 0 16 16">
+              <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+            </svg> 
+          </button> 
         </div>
       </div>
     </section>
     
 
-    <section class="carousel">
-      <h2>Latest on Netflux</h2> 
-      <div id="new-carousel" class="carousel-container"></div> 
-    </section>
+    <div class="mainCarousels">
 
-    <section class="carousel">
-      <h2>Movies</h2>
-      <div id="movie-carousel" class="carousel-container"></div>
-    </section>
+      <section class="carousel">
+        <h2>Latest on Netflux</h2> 
+        <div id="new-carousel" class="carousel-container"></div> 
+      </section>
+  
+      <section class="carousel">
+        <h2>Movies</h2>
+        <div id="movie-carousel" class="carousel-container"></div>
+      </section>
+  
+      <section class="carousel">
+        <h2>Series</h2>
+        <div id="series-carousel" class="carousel-container"></div>
+      </section>
 
-    <section class="carousel">
-      <h2>Series</h2>
-      <div id="series-carousel" class="carousel-container"></div>
-    </section>
-
-
-<!-- 
-    <section class="genre-container carousel">
-      <h2>Action</h2>
-      <div class="carousel-container"></div>
-    </section>
-
-    <section class="genre-container carousel">
-      <h2>Comedy</h2>
-      <div class="carousel-container"></div>
-    </section>
- -->
-
-
-
-
+    </div>
+    
     <section class="fill-in"></section>
-
-
-
   </main>
+
 
 
   <script src="js/searchbar.js"></script>
   <script src="js/films.js"></script>
-  <script src="js/functions.js"></script>
-  <!-- <script src="js/toggleMS.js"></script> -->
+  <script src="js/onloadFunctions.js"></script>
+  <script src="js/toggleMS.js"></script>
   
+
+
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('aside li a');
+
+    // Voeg een click-eventlistener toe aan elk linkelement
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Verwijder de 'active' class van alle navigatie-items
+            document.querySelectorAll('aside li').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Voeg de 'active' class toe aan de parent <li> van de geklikte link
+            link.parentElement.classList.add('active');
+        });
+    });
+    });
+
+    
+    // Functie om het aantal "N" items te berekenen
+    function assignNToItems(totalItems) {
+        const numberOfN = Math.floor(totalItems / 3);
+        const indices = new Set();
+        while (indices.size < numberOfN) {
+            const randomIndex = Math.floor(Math.random() * totalItems);
+            indices.add(randomIndex);
+        }
+        return Array.from(indices);
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <script>
+    function getRidOfSearchContainer() {
+      const main = document.querySelector('main');
+      const searchResultsContainer = document.getElementById('search-results-container');
+
+      // Verberg de zoekresultaten
+      searchResultsContainer.classList.add('hidden');
+
+      // Toon de hoofdinformatie weer
+      main.classList.remove('hidden');
+    };
+
+
+
+    document.querySelector('a[href="#home"]').onclick = () => {
+      getRidOfSearchContainer();
+      
+      resetToHomeView();
+
+      getRandomSpotlight();
+      populateNewOnNetflux(); 
+      populateCarousel('films', 'movie-carousel');
+      populateCarousel('series', 'series-carousel');
+    };
+
+    document.querySelector('a[href="#movies"]').onclick = () => {
+      getRidOfSearchContainer();
+
+      currentCategory = "films";
+      getRandomSpotlightMS();
+      populateGenreCarousels(currentCategory);
+    };
+
+
+    document.querySelector('a[href="#series"]').onclick = () => {
+      getRidOfSearchContainer();
+
+      currentCategory = "series";
+      getRandomSpotlightMS();
+      populateGenreCarousels(currentCategory); 
+    };
+
+  </script>
+
 </body>
 
 

@@ -32,7 +32,7 @@ header {
  
 .logo {
     margin-left: 14px;
-    width: 170px;
+    width: 190px;
     font-size: xxx-large;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      background: linear-gradient(90deg, var(--primary-color), #ff265c, var(--primary-color)); 
@@ -102,7 +102,12 @@ button:hover {
     margin-bottom: 20px;
 }
 
-
+.addToMyList {
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
 
 
 
@@ -336,7 +341,11 @@ aside li:hover::after {
 aside li:focus::after {
     transform: scaleX(1);
 }
- 
+
+aside li.active::after {
+    transform: scaleX(1);
+}
+
  
 aside a {
     color: #fff;
@@ -353,9 +362,6 @@ aside a {
     margin-top: 60px;
     margin-bottom: -20px;
 }
- 
- 
-
 
 
 main {

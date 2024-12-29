@@ -24,10 +24,6 @@ function updateSpotlight(category, index) {
 
 
 
-
-
-
-
 // Functie om willekeurig een film of serie te selecteren
 function getRandomSpotlight() {
     const categories = ['films', 'series'];
@@ -35,14 +31,6 @@ function getRandomSpotlight() {
     const randomIndex = Math.floor(Math.random() * filmlijst[randomCategory].length);
     updateSpotlight(randomCategory, randomIndex);
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -93,26 +81,6 @@ document.querySelector('.overlay-info').onclick = () => {
 
 
 
-
-
-
-// Functie om het aantal "N" items te berekenen
-function assignNToItems(totalItems) {
-    const numberOfN = Math.floor(totalItems / 3);
-    const indices = new Set();
-    while (indices.size < numberOfN) {
-        const randomIndex = Math.floor(Math.random() * totalItems);
-        indices.add(randomIndex);
-    }
-    return Array.from(indices);
-}
-
-
-
-
-
-
-
 function populateNewOnNetflux() {
     const container = document.getElementById('new-carousel');
     const items = [...filmlijst.films, ...filmlijst.series]; // Combineer films en series (spread array)
@@ -137,9 +105,6 @@ function populateNewOnNetflux() {
         container.appendChild(carouselItem);
     });
 }
-
-
-
 
 
 
@@ -172,13 +137,6 @@ function populateCarousel(category, containerId) {
 
 
 
-
-
-
-
-
-
-
 // Bij laden site, voer random spotlight en vul carousels
 window.onload = function() {
     getRandomSpotlight();
@@ -187,3 +145,35 @@ window.onload = function() {
     populateCarousel('films', 'movie-carousel');
     populateCarousel('series', 'series-carousel');
 };
+
+
+
+
+
+// Functie om te resetten naar de standaardweergave
+function resetToHomeView() {
+    const mainContainer = document.querySelector('.mainCarousels'); 
+    mainContainer.innerHTML = ''; // Maak de container leeg
+
+    // Voeg de juiste secties opnieuw toe
+    mainContainer.innerHTML = `
+        <section class="carousel">
+            <h2>Latest on Netflux</h2>
+            <div id="new-carousel" class="carousel-container"></div>
+        </section>
+
+        <section class="carousel">
+            <h2>Movies</h2>
+            <div id="movie-carousel" class="carousel-container"></div>
+        </section>
+
+        <section class="carousel">
+            <h2>Series</h2>
+            <div id="series-carousel" class="carousel-container"></div>
+        </section>
+    `;
+
+    
+}
+
+
