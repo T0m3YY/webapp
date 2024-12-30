@@ -6,17 +6,48 @@
  
 :root {
     --primary-color: #1443fd;
-    /* --primary-color: red; */
+    --secondary-color: rgb(0, 0, 0);
+    --text-color: #fff;
+
+    --button-bg: rgba(255, 255, 255, 0.5);
+    --button-hover-bg: #fff;
+    --button-hover-text: #000;
+
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --searchContainer-bg: rgba(0, 0, 0, 0.5);
+    --searchbar-bg: #222;
+
+    --settings-navigation-bg: #111;
+    --settings-navigationActive-bg: #1f1f1f;
+
     --nav-icons-w-h: 26px;
 
+}
+
+/* Light mode */
+html.light {
+    --primary-color: #007bff; /* Lichter blauw voor het thema */
+    --secondary-color: #fff;
+    --text-color: rgb(0, 0, 0);
+
+    --button-bg: rgba(0, 0, 0, 0.1);
+    --button-hover-bg: #000;
+    --button-hover-text: #fff;
+
+    --overlay-bg: rgba(255, 255, 255, 0.7);
+    --searchContainer-bg: rgba(255, 255, 255, 0.5);
+    --searchbar-bg: #d6d6d6;
+
+    --settings-navigation-bg: #f0f0f0;
+    --settings-navigationActive-bg: #dcdcdc;
 }
 
 
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #000000;
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
  
 header {
@@ -24,7 +55,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #000;
+    background-color: var(--secondary-color);
     height: 100px;
     z-index: 11;
     position: relative;
@@ -76,10 +107,10 @@ button {
 
     border: none;
     border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--button-bg);
 
     font-size: large;
-    color: white;
+    color: var(--text-color);
     
     transition: 0.5s;
 }
@@ -88,14 +119,20 @@ button svg {
     margin-right: 5px; /* Zorgt voor ruimte tussen de SVG en de tekst */
     display: inline-block; /* Zorgt ervoor dat het in lijn met de tekst blijft */
     vertical-align: middle;
+    transition: 0.5s;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255);
-    color: #000;
+    background-color: var(--text-color);
+    color: var(--button-hover-text);
+    svg {
+        fill: var(--button-hover-text);
+        transition: 0.5s;
+    }
     transition: 0.5s;
 }
+
 
 .buttons {
     display: flex;
@@ -106,7 +143,7 @@ button:hover {
     width: 40px;
     border-radius: 50%;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(123, 123, 123, 0.5);
 }
 
 
@@ -124,7 +161,7 @@ button:hover {
     width: 600px;
     max-height: 90%; /* Beperk de hoogte tot 80% van de schermhoogte */
     overflow-y: auto; /* Zorgt ervoor dat de popup scrollbaar wordt als de inhoud groter is dan 80% */
-    color: white;
+    color: var(--text-color);
     transition: bottom 0.5s ease;
     padding: 20px;
     display: flex;
@@ -153,7 +190,7 @@ button:hover {
     overflow-y: auto; /* Sta verticale scrolling toe binnen de inhoud */
 
     width: 100%;
-    background-color: #000;
+    background-color: var(--secondary-color);
     border-radius: 10px;
 }
 
@@ -167,7 +204,7 @@ button:hover {
     position: relative;
     height: 300px; 
     width: 100%; 
-    background-color: #000;
+    background-color: var(--secondary-color);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -184,7 +221,7 @@ button:hover {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    color: white;
+    color: #fff;
     font-size: 2rem;
 }
 
@@ -195,7 +232,7 @@ button:hover {
 .info-details p {
     margin-top: 10px;
 
-    color: #b4b4b4;
+    color: #969696;
 }
 
 #info-date-made {
@@ -205,7 +242,7 @@ button:hover {
 
 #info-description {
     margin-bottom: 25px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .overlay-info {
@@ -214,7 +251,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--overlay-bg);
     backdrop-filter: blur(5px); 
     -webkit-backdrop-filter: blur(5px);
     z-index: 47;
@@ -239,7 +276,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Donkere achtergrond */
+    background-color: var(--overlay-bg); /* Donkere achtergrond */
     backdrop-filter: blur(5px); /* Wazig effect */
     -webkit-backdrop-filter: blur(5px);
     z-index: 49;
@@ -260,7 +297,7 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 50;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--searchContainer-bg);
     padding: 10px;
     border-radius: 8px;
 }
@@ -269,9 +306,9 @@ button:hover {
     width: 300px;
     padding: 10px;
     font-size: 16px;
-    background-color: #222;
+    background-color: var(--searchbar-bg);
     border: none;
-    color: white;
+    color: var(--text-color);
     border-radius: 5px;
 }
 
@@ -282,7 +319,7 @@ button:hover {
 .search-bar-info {
     font-size: small;
     margin-bottom: 10px;
-    color: #fff;
+    color: var(--text-color);
     b {
         color: var(--primary-color);
     }
@@ -299,7 +336,7 @@ button:hover {
  
 aside {
     width: 100px;
-    background-color: #000;
+    background-color: var(--secondary-color);
     height: calc(100% + 170px);
     position: fixed;
     top: -50px;
@@ -365,7 +402,7 @@ aside a {
 
 
 main {
-    background-color: rgb(0, 0, 0);
+    background-color: var(--secondary-color);
     height: 100vh;
     margin-left: 80px;
     padding: 20px 20px 20px 40px;
@@ -377,13 +414,13 @@ main {
 
 
 #spotlight { 
-    background-color: #000000;
+    background-color: var(--secondary-color);
     margin: -20px -20px;
     min-height: 550px;
     max-height: fit-content;
     padding: 20px;
     
-    box-shadow: inset 380px 1px 1000px 70px rgba(0, 0, 0, 1);
+    box-shadow: inset 390px 0px 1000px 30px var(--secondary-color);
     
     background-repeat: no-repeat;
     background-size: cover;
@@ -394,7 +431,7 @@ main {
 
 #spotlight-information {
     transform: translateY(80px);
-    color: white;
+    color: var(--text-color);
 
     #spotlight-mORs {
         b {
@@ -428,7 +465,7 @@ main {
 .carousel h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: white;
+    color: var(--text-color);
 }
 
 .carousel-container {
@@ -450,7 +487,7 @@ main {
 
 .carousel-container::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
-    background: #555; 
+    background: #727272; 
 }
 
 .carousel-container::-webkit-scrollbar-thumb:active {
@@ -461,7 +498,7 @@ main {
 .carousel-item {
     min-width: 200px;
     max-width: 200px; 
-    flex-shrink: 0;
+    height: 300px;
     position: relative;
     cursor: pointer;
     border-radius: 8px;
@@ -478,7 +515,7 @@ main {
 }
 
 .carousel-item img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .carousel-item p {
@@ -487,8 +524,8 @@ main {
     width: 100%;
     padding: 10px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    background-color: var(--overlay-bg);
+    color: var(--text-color);
     font-size: 1.2rem;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -535,7 +572,7 @@ main {
 
 .search-results-grid .carousel-item {
     width: 100%;
-    height: auto;
+    height: 250px;
     max-width: none; 
 }
 
@@ -559,4 +596,225 @@ main {
 
 .fill-in {
     height: 200px;
+}
+
+
+
+
+
+
+.settings-section {
+    display: flex;
+    position: fixed;
+    height: calc(100vh - 100px);
+    width: calc(100% - 80px); /* Houd rekening met de ruimte van de sidebar */
+    margin-left: 80px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+  
+.settings-navigation {
+    width: 180px; /* Navigatie neemt 20% van de breedte in */
+    background-color: var(--settings-navigation-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 1px solid #7e7e7e72;
+}
+  
+.settings-navigation .settings-nav {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 25px;
+    margin-left: 20px;
+    margin-top: 35px;
+    text-align: left; /* Tekst links uitlijnen */
+    transition: color 0.3s, background-color 0.3s; 
+    justify-content: left;
+}
+  
+.settings-navigation .settings-nav.active {
+    color: var(--primary-color);
+    background-color: var(--settings-navigationActive-bg);
+}
+  
+.settings-content {
+    flex: 1; /* Neemt de resterende ruimte in */
+    overflow-y: auto; /* Alleen het rechtergedeelte scrollbaar */
+    padding: 20px;
+}
+  
+.settings-tab {
+    display: none; /* Verberg de secties standaard */
+}
+  
+.settings-tab.active {
+    display: flex;
+    flex-direction: column;
+}
+  
+.settings-tab h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+  
+.settings-tab p,
+.settings-tab ul {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: #7f7f7f;
+}
+  
+.settings-tab ul li {
+    margin-left: 20px;
+    list-style: disc;
+}
+
+
+
+
+
+
+
+
+/* Styling voor de thema-sectie */
+#theme {
+    align-items:start;
+    text-align:left;
+    gap: 20px;
+    position: relative;
+}
+  
+.theme-description p {
+    font-size: 1rem;
+    color: #787878;
+    margin: 0 10px;
+    max-width: 600px;
+}
+  
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    gap: 15px;
+    position: relative;
+}
+
+  
+/* Basisstijl voor de toggle */
+.theme-toggle {
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    position: relative;
+}
+  
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #868686;
+    transition: background-color 0.4s;
+    border-radius: 34px;
+}
+  
+  /* De cirkel binnen de slider */
+.slider::before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+  
+/* Wanneer de checkbox is aangevinkt (activeert dark mode) */
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+  
+input:checked + .slider::before {
+    transform: translateX(26px);
+}
+  
+/* Optioneel: een glow-effect bij hover */
+.theme-toggle:hover .slider {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+  
+/* Styling voor de labels */
+.theme-label {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: bold;
+    user-select: none; /* Voorkomt tekstselectie */
+}
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.glass-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+  
+.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    color: var(--text-color);
+    transition: transform 0.2s ease;
+}
+  
+.glass-card:hover {
+    transform: scale(1.02);
+    background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); /* Vervang red en blue door hun juiste rgba() */
+}
+  
+.glass-card h4 {
+    margin-bottom: 15px;
+}
+  
+.glass-card p {
+    margin: 0.3rem 5px;
+    font-size: 0.9rem;
+    color: #7e7e7e;
+}
+
+.tab-description {
+    color: #848484;
+    margin-bottom: 30px;
+    width: 600px;
 }

@@ -27,8 +27,11 @@ document.querySelector('.search-bar').addEventListener('keydown', function(event
 
         // Verberg de zoekbalk en de overlay zodra de zoekopdracht is ingediend
         document.querySelectorAll('.overlay-searchbar, .search-container').forEach(el => el.classList.add('hidden'));
+        getRidOfSettingsContainer();
     }
 });
+
+
 
 // Functie om films/series te filteren op basis van de zoekterm
 function filterResults(searchTerm) {
@@ -177,14 +180,3 @@ document.getElementById('filter-clear').addEventListener('click', function() {
     clearFilters(); // Reset de filters en toon alle resultaten
 });
 
-// Event listener voor de home link
-document.querySelector('a[href="#home"]').onclick = () => {
-    const main = document.querySelector('main');
-    const searchResultsContainer = document.getElementById('search-results-container');
-
-    // Verberg de zoekresultaten
-    searchResultsContainer.classList.add('hidden');
-
-    // Toon de hoofdinformatie weer
-    main.classList.remove('hidden');
-};
