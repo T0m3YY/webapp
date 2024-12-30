@@ -63,7 +63,7 @@ header {
  
 .logo {
     margin-left: 14px;
-    width: 190px;
+    width: 210px;
     font-size: xxx-large;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      background: linear-gradient(90deg, var(--primary-color), #ff265c, var(--primary-color)); 
