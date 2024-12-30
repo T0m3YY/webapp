@@ -19,6 +19,15 @@ document.querySelectorAll('.settings-nav').forEach(navButton => {
             commitContainer.innerHTML = "<p>Bezig met laden...</p>"; // Laadindicator
             fetchLatestCommits();
         }
+
+        if (sectionId === "info") {
+            const aboutContainer = document.getElementById("about-container");
+            aboutContainer.innerHTML = "<p>Bezig met laden...</p>"; // Laadindicator
+            fetchRepoInfo();
+            
+        } else {
+            console.error('Het "info" tab-element kon niet worden gevonden.');
+        }
     });
 });
 
@@ -108,4 +117,56 @@ document.querySelector('a[href="#updates"]').onclick = () => {
 
     // Haal de laatste commits op en werk de container bij
     fetchLatestCommits();
+};
+
+
+
+
+
+
+async function fetchRepoInfo() {
+    const username = "t0m3yy"; // Vervang met je GitHub-gebruikersnaam
+    const repo = "webapp"; // Vervang met je repositorynaam
+    const repoUrl = `https://api.github.com/repos/${username}/${repo}`;
+    const userUrl = `https://api.github.com/users/${username}`;
+
+    try {
+        const repoResponse = await fetch(repoUrl);
+        const userResponse = await fetch(userUrl);
+
+        if (!repoResponse.ok || !userResponse.ok) {
+            throw new Error("Error fetching GitHub data");
+        }
+
+        const repoData = await repoResponse.json();
+        const userData = await userResponse.json();
+
+        const repoInfo = `
+            <br>
+            <br>
+            <h4>Projectinformatie</h3>
+            <p><strong>Beschrijving:</strong> ${repoData.description || "Geen beschrijving beschikbaar."}</p>
+            <p><strong>Sterren:</strong> ${repoData.stargazers_count}</p>
+            <p><strong>Forks:</strong> ${repoData.forks_count}</p>
+            <p><strong>Laatste update:</strong> ${new Date(repoData.updated_at).toLocaleString()}</p>
+            <p><strong>Hoofdtak:</strong> ${repoData.default_branch}</p>
+            <br>
+            <h3>Ontwikkelaarinformatie</h3>
+            <p><strong>Naam:</strong> ${userData.name || "Geen naam beschikbaar."}</p>
+            <p><strong>Bio:</strong> ${userData.bio || "Geen bio beschikbaar."}</p>
+        `;
+
+        document.getElementById("about-container").innerHTML = repoInfo;
+
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        document.getElementById("about-container").innerHTML = "<p>Fout bij het ophalen van informatie.</p>";
+    }
+}
+
+// Laad informatie wanneer de gebruiker naar het "Over deze site"-tabblad gaat
+document.querySelector('a[href="#info"]').onclick = () => {
+    const aboutContainer = document.getElementById("about-container");
+    aboutContainer.innerHTML = "<p>Bezig met laden...</p>"; // Laadindicator
+    fetchRepoInfo();
 };

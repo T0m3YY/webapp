@@ -807,7 +807,7 @@ input:checked + .slider::before {
     margin-bottom: 15px;
 }
   
-.glass-card p {
+#settings p {
     margin: 0.3rem 5px;
     font-size: 0.9rem;
     color: #7e7e7e;
