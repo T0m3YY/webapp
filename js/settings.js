@@ -51,8 +51,6 @@ themeSwitch.addEventListener('change', () => {
 
 
 
-
-// Haal de laatste commits op van GitHub
 async function fetchLatestCommits() {
     const username = "t0m3yy"; // Vervang door je GitHub-gebruikersnaam
     const repo = "webapp"; // Vervang door je repositorynaam
@@ -67,14 +65,24 @@ async function fetchLatestCommits() {
         const commits = await response.json();
         const commitContainer = document.getElementById("commit-container");
 
-        // Verwijder oude commits om duplicaten te voorkomen
-        commitContainer.innerHTML = ""; // Dit maakt de container leeg
+        // Verwijder de laadindicator
+        commitContainer.innerHTML = "";
 
         // Laatste drie commits ophalen
-        commits.slice(0, 3).forEach(commit => {
+        commits.slice(0, 3).forEach(async (commit) => {
             const commitMessage = commit.commit.message;
             const commitDate = new Date(commit.commit.author.date).toLocaleString();
             const authorName = commit.commit.author.name;
+
+            // Haal de veranderingen op voor de specifieke commit door de sha te gebruiken
+            const commitDetailsUrl = `https://api.github.com/repos/${username}/${repo}/commits/${commit.sha}`;
+            const commitDetailsResponse = await fetch(commitDetailsUrl);
+            const commitDetails = await commitDetailsResponse.json();
+
+            // Haal de veranderingen uit de commitDetails
+            const changes = commitDetails.files ? commitDetails.files.map(file => {
+                return `${file.status} ${file.filename}`;
+            }).join("<br>") : "Geen bestandwijzigingen";
 
             // Maak een glazen kaartje voor elke commit
             const commitCard = document.createElement("div");
@@ -83,6 +91,7 @@ async function fetchLatestCommits() {
                 <h4>${commitMessage}</h3>
                 <p><strong>Datum:</strong> ${commitDate}</p>
                 <p><strong>Auteur:</strong> ${authorName}</p>
+                <p><strong>Wijzigingen:</strong><br>${changes}</p>
             `;
 
             commitContainer.appendChild(commitCard);
@@ -92,3 +101,11 @@ async function fetchLatestCommits() {
         document.getElementById("commit-container").innerHTML = "<p>Fout bij het ophalen van updates.</p>";
     }
 }
+
+document.querySelector('a[href="#updates"]').onclick = () => {
+    const commitContainer = document.getElementById("commit-container");
+    commitContainer.innerHTML = "<p>Bezig met laden...</p>"; // Laadindicator
+
+    // Haal de laatste commits op en werk de container bij
+    fetchLatestCommits();
+};
