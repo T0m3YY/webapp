@@ -803,7 +803,7 @@ input:checked + .slider::before {
     background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); /* Vervang red en blue door hun juiste rgba() */
 }
 
-.glass-card:active {
+.glass-card:focus {
     transform: scale(1.02);
     background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); /* Vervang red en blue door hun juiste rgba() */
 }
