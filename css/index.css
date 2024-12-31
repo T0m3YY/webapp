@@ -20,6 +20,9 @@
     --settings-navigation-bg: #111;
     --settings-navigationActive-bg: #1f1f1f;
 
+    --about-boxShadow: rgba(255, 255, 255, 0);
+    --about-boxBG: #121212;
+
     --nav-icons-w-h: 26px;
 
 }
@@ -40,6 +43,10 @@ html.light {
 
     --settings-navigation-bg: #f0f0f0;
     --settings-navigationActive-bg: #dcdcdc;
+
+    --about-boxShadow: rgba(0, 0, 0, 0.1);
+    --about-boxBG: #fff;
+
 }
 
 
@@ -800,7 +807,7 @@ input:checked + .slider::before {
   
 .glass-card:hover {
     transform: scale(1.02);
-    background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); /* Vervang red en blue door hun juiste rgba() */
+    background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); 
 }
 
 .glass-card h4 {
@@ -829,10 +836,10 @@ input:checked + .slider::before {
 
 /* Algemene styling */
 .info-container {
-    background-color: #f9f9f9;
+    background-color: var(--about-boxBG);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px var(--about-boxShadow);
     max-width: 700px;
     margin: left;
     margin-top: 20px;
@@ -862,7 +869,7 @@ input:checked + .slider::before {
 .info-list li {
     margin: 8px 0;
     font-size: 1rem;
-    color: #333;
+    color: #808080;
 }
 
 /* Gebruikersinformatie */
@@ -876,7 +883,7 @@ input:checked + .slider::before {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px var(--about-boxShadow);
 }
 
 .user-info p {
