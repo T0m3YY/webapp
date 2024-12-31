@@ -76,7 +76,7 @@ async function fetchLatestCommits() {
         commitContainer.innerHTML = "";
 
         // Laatste drie commits ophalen
-        commits.slice(0, 4).forEach(async (commit) => {
+        commits.slice(0, 3).forEach(async (commit) => {
             const commitMessage = commit.commit.message;
             const commitDate = new Date(commit.commit.author.date).toLocaleString();
             const authorName = commit.commit.author.name;
