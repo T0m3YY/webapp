@@ -25,9 +25,7 @@ document.querySelectorAll('.settings-nav').forEach(navButton => {
             aboutContainer.innerHTML = "<p>Bezig met laden...</p>"; // Laadindicator
             fetchRepoInfo();
             
-        } else {
-            console.error('Het "info" tab-element kon niet worden gevonden.');
-        }
+        } 
     });
 });
 
@@ -142,20 +140,30 @@ async function fetchRepoInfo() {
         const userData = await userResponse.json();
 
         const repoInfo = `
-            <br>
-            <br>
-            <h4>Projectinformatie</h3>
-            <p><strong>Beschrijving:</strong> ${repoData.description || "Geen beschrijving beschikbaar."}</p>
-            <p><strong>Sterren:</strong> ${repoData.stargazers_count}</p>
-            <p><strong>Forks:</strong> ${repoData.forks_count}</p>
-            <p><strong>Laatste update:</strong> ${new Date(repoData.updated_at).toLocaleString()}</p>
-            <p><strong>Hoofdtak:</strong> ${repoData.default_branch}</p>
-            <br>
-            <h3>Ontwikkelaarinformatie</h3>
-            <p><strong>Naam:</strong> ${userData.name || "Geen naam beschikbaar."}</p>
-            <p><strong>Bio:</strong> ${userData.bio || "Geen bio beschikbaar."}</p>
+            <div class="info-container">
+                <section class="info-section">
+                    <h3>Projectinformatie</h3>
+                    <ul class="info-list">
+                        <li><strong>Beschrijving:</strong> ${repoData.description || "Geen beschrijving beschikbaar."}</li>
+                        <li><strong>Sterren:</strong> ${repoData.stargazers_count}</li>
+                        <li><strong>Laatste update:</strong> ${new Date(repoData.updated_at).toLocaleDateString()}</li>
+                        <li><strong>Hoofdtak:</strong> ${repoData.default_branch}</li>
+                    </ul>
+                </section>
+                <section class="info-section">
+                    <h3>Ontwikkelaarinformatie</h3>
+                    <div class="user-info">
+                        <img src="${userData.avatar_url}" alt="Avatar" class="user-avatar">
+                        <div>
+                            <p><strong>Naam:</strong> ${userData.name || "Geen naam beschikbaar."}</p>
+                            <p><strong>Bio:</strong> ${userData.bio || "Geen bio beschikbaar."}</p>
+                            <a href="${repoData.html_url}" target="_blank" class="btn">Bekijk repository</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
         `;
-
+    
         document.getElementById("about-container").innerHTML = repoInfo;
 
     } catch (error) {

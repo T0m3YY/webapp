@@ -802,7 +802,12 @@ input:checked + .slider::before {
     transform: scale(1.02);
     background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); /* Vervang red en blue door hun juiste rgba() */
 }
-  
+
+.glass-card:active {
+    transform: scale(1.02);
+    background: linear-gradient(45deg, #1443fd47, rgba(0, 0, 255, 0.1)); /* Vervang red en blue door hun juiste rgba() */
+}
+
 .glass-card h4 {
     margin-bottom: 15px;
 }
@@ -816,5 +821,85 @@ input:checked + .slider::before {
 .tab-description {
     color: #848484;
     margin-bottom: 30px;
-    width: 600px;
+    max-width: 600px;
+}
+
+
+
+
+
+
+
+
+
+/* Algemene styling */
+.info-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: left;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Secties */
+.info-section {
+    margin-bottom: 20px;
+}
+
+.info-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Lijststijl */
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Gebruikersinformatie */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #5683ff;
 }
